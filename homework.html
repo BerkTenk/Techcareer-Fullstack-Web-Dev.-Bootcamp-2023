@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <header>
         <h1 id="baslik">Berk Tenkoğlu Blog</h1>
-        <i>Bu blog sayfası Techcareer FullStack Web Development Bootcamp Ödevi İçin Hazırlanmıştır.</i>
-        <nav>
+        <i>Bu blog sayfası Techcareer FullStack Web Development Bootcamp ödevi için hazırlanmıştır.</i>
+        <nav class="navbar">
             <ul>
                 <li><a href="#anasayfa">Ana Sayfa</a></li>
                 <li><a href="#hakkinda">Hakkında</a></li>
@@ -19,71 +24,81 @@
         </nav>
     </header>
     <main>
-        <section>
+        <section class="anasayfa">
             <h2 id="anasayfa" class="altBaslik">Anasayfa</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident magni voluptates sed consectetur saepe obcaecati, quia inventore temporibus tempore architecto libero a ullam iure at quidem beatae, nobis sapiente. Voluptas?</p>
-            <img src="https://lh3.googleusercontent.com/p/AF1QipNr1aRKF6Mewbs5fq-PrQGYBskTZ53QNLZXyvLi=s680-w680-h510" width="200" alt="aciklama">
-            <a href="https://www.techcareer.net/">Techcareer Net</a>
+            <p class="giris">Ben Berk Tenkoğlu. Web sayfama hoşgeldin. Bu sayfada benimle ilgili bilgileri, aldığım eğitimleri ve sertifikalarımı bulabilirsin.</p>
+            <img src="./assets/me.jpg" alt="aciklama">
         </section>
         <section>
             <h2 id="hakkinda" class="altBaslik">Hakkında</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis, consequatur id. Ullam tempore accusantium sint eos earum culpa porro voluptates quis illum eligendi magni iste aliquid iure exercitationem, fugit quas!</p>
-            <img src="https://lh3.googleusercontent.com/p/AF1QipNr1aRKF6Mewbs5fq-PrQGYBskTZ53QNLZXyvLi=s680-w680-h510" width="200" alt="aciklama">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis, consequatur id. Ullam tempore
+                accusantium sint eos earum culpa porro voluptates quis illum eligendi magni iste aliquid iure
+                exercitationem, fugit quas!</p>
+            <img src="https://lh3.googleusercontent.com/p/AF1QipNr1aRKF6Mewbs5fq-PrQGYBskTZ53QNLZXyvLi=s680-w680-h510"
+                width="200" alt="aciklama">
             <a href="https://www.techcareer.net/">Techcareer Net</a>
         </section>
         <section>
             <h2 id="iletisim" class="altBaslik">İletişim</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit deleniti sed atque commodi? Commodi officia architecto repellat explicabo sequi accusantium alias, similique maiores atque inventore reprehenderit quo asperiores distinctio ipsa!</p>
-            <img src="https://lh3.googleusercontent.com/p/AF1QipNr1aRKF6Mewbs5fq-PrQGYBskTZ53QNLZXyvLi=s680-w680-h510" width="200" alt="aciklama">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit deleniti sed atque commodi? Commodi officia
+                architecto repellat explicabo sequi accusantium alias, similique maiores atque inventore reprehenderit
+                quo asperiores distinctio ipsa!</p>
+            <img src="https://lh3.googleusercontent.com/p/AF1QipNr1aRKF6Mewbs5fq-PrQGYBskTZ53QNLZXyvLi=s680-w680-h510"
+                width="200" alt="aciklama">
             <a href="https://www.techcareer.net/">Techcareer Net</a>
             <h2 class="altBaslik">Mesaj Gönder</h2>
             <b>Mesajınızı aşağıdaki form ile gönderebilirsiniz.</b>
-            <form>
+            <form action="#" method="post">
                 <label for="ad">Adınız :</label>
-                <input type="text" id="ad" name="ad">
-        
+                <input type="text" id="ad" name="ad" required>
+
                 <label for="soyad">Soyadınız :</label>
-                <input type="text" id="soyad" name="soyad">
-        
+                <input type="text" id="soyad" name="soyad" required>
+
                 <label for="mesaj">Mesajınız :</label>
-                <textarea  id="mesaj" name="mesaj" rows="4" cols="50"></textarea>
-        
+                <textarea id="mesaj" name="mesaj" rows="4" required></textarea>
+
                 <button type="submit">Gönder</button>
             </form>
         </section>
         <section>
             <h2 class="altBaslik" id="tablo">Sayfanın En Çok Ziyaret Edildiği Ülkeler</h2>
-            <table class="tablo" >
-                <tr>
-                    <th>Ülke</th>
-                    <th>Şehir</th>
-                    <th>Ziyaretçi Sayısı</th>
-                    <th>Ortalama Ziyaret Süresi (dk)</th>
-                </tr>
-                <tr>
-                    <td>Türkiye</td>
-                    <td>İstanbul</td>
-                    <td>100</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td>Türkiye</td>
-                    <td>Ankara</td>
-                    <td>50</td>
-                    <td>20</td>
-                </tr>
-                <tr>
-                    <td>Almanya</td>
-                    <td>Berlin</td>
-                    <td>20</td>
-                    <td>10</td>
-                </tr>
+            <table class="tablo">
+                <thead>
+                    <tr>
+                        <th>Ülke</th>
+                        <th>Şehir</th>
+                        <th>Ziyaretçi Sayısı</th>
+                        <th>Ortalama Ziyaret Süresi (dk)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Türkiye</td>
+                        <td>İstanbul</td>
+                        <td>100</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Türkiye</td>
+                        <td>Ankara</td>
+                        <td>50</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Almanya</td>
+                        <td>Berlin</td>
+                        <td>20</td>
+                        <td>10</td>
+                    </tr>
+                </tbody>
             </table>
         </section>
     </main>
-    <footer>
-        <a href="#baslik">Sayfa başına dön</a>
+    <footer class="footer">
+        <a class="basa-don-btn" href="#baslik">Sayfa başına dön</a>
         <p>&copy; 2023 Telif Hakkı. Tüm hakları saklıdır.</p>
     </footer>
 </body>
+
 </html>

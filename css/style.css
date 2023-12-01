@@ -1,0 +1,89 @@
+body {
+    font-family:'Playfair Display', Helvetica, sans-serif ;
+    text-align: center;
+    background-image: url("../assets/bg.JPG");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    
+    
+}
+
+h1 {
+    font-size: 2.8rem;
+}
+h2{
+    font-size: 1.5rem;
+}
+section{
+    margin: 20px;
+}
+
+.navbar ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.navbar ul li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    background-color: coral;
+    border: 1px solid black;
+}
+.navbar ul li a{
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+.navbar ul li:hover{
+    background-color: chocolate;
+}
+.basa-don-btn{
+    display: none;
+}
+
+.giris::before{
+    content: "Merhaba.";
+    font-weight: bold;
+    padding-right: 1rem;
+}
+.anasayfa{
+    margin: 2rem;
+}
+.anasayfa img{
+    margin-top: 2rem;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out;
+}
+.anasayfa img:hover{
+    transform: scale(1.2);
+}
+
+.tablo {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+
+}
+
+.tablo th {
+    background-color: lightgray;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+.tablo tbody tr:hover{
+    background-color: bisque;
+}
+.tablo td{
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.tablo tbody tr:nth-child(even){
+    background-color: lightblue;
+}
