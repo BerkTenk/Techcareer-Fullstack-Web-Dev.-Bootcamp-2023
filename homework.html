@@ -30,7 +30,7 @@
             <h2 id="anasayfa" class="altBaslik">Anasayfa</h2>
             <p class="giris">Ben Berk Tenkoğlu. Web sayfama hoşgeldin. Bu sayfada benimle ilgili bilgileri, aldığım
                 eğitimleri ve sertifikalarımı bulabilirsin.</p>
-
+                <a class="basa-don-btn" href="#baslik">Sayfa başına dön</a>
         </section>
         <section class="me">
             <h2 id="hakkinda" class="altBaslik">Hakkında</h2>
@@ -56,28 +56,29 @@
                 <p>React</p>
             </div>
         </section>
-        <section>
+        <section class="iletisim">
             <h2 id="iletisim" class="altBaslik">İletişim</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit deleniti sed atque commodi? Commodi officia
-                architecto repellat explicabo sequi accusantium alias, similique maiores atque inventore reprehenderit
-                quo asperiores distinctio ipsa!</p>
-            <img src="https://lh3.googleusercontent.com/p/AF1QipNr1aRKF6Mewbs5fq-PrQGYBskTZ53QNLZXyvLi=s680-w680-h510"
-                width="200" alt="aciklama">
-            <a href="https://www.techcareer.net/">Techcareer Net</a>
+            <p> <i class="fa-solid fa-envelope"></i>
+                berk.tenkoglu@gmail.com</p>
             <h2 class="altBaslik">Mesaj Gönder</h2>
             <b>Mesajınızı aşağıdaki form ile gönderebilirsiniz.</b>
+            <div class="form">
             <form action="#" method="post">
-                <label for="ad">Adınız :</label>
-                <input type="text" id="ad" name="ad" required>
-
-                <label for="soyad">Soyadınız :</label>
-                <input type="text" id="soyad" name="soyad" required>
-
-                <label for="mesaj">Mesajınız :</label>
-                <textarea id="mesaj" name="mesaj" rows="4" required></textarea>
-
-                <button type="submit">Gönder</button>
+                <div class="form-group">
+                    <label for="nane">Adınız:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-posta Adresiniz:</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mesajınız:</label>
+                    <textarea name="message" id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Gönder</button>
             </form>
+        </div>
         </section>
         <section>
             <h2 class="altBaslik" id="tablo">Sayfanın En Çok Ziyaret Edildiği Ülkeler</h2>
@@ -114,8 +115,17 @@
         </section>
     </main>
     <footer class="footer">
-        <a class="basa-don-btn" href="#baslik">Sayfa başına dön</a>
-        <p>&copy; 2023 Telif Hakkı. Tüm hakları saklıdır.</p>
+        <div class="footer-left">
+            <p>&copy; 2023 Telif Hakkı. Tüm hakları saklıdır.</p>
+        </div>
+        <div class="footer-right">
+            <ul class="social-media-icons">
+                <a href="https://www.linkedin.com/in/berktenkoglu"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/BerkTenk"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/berktenkoglu"><i class="fab fa-instagram"></i></a>
+            </ul>
+        </div>
+        
     </footer>
 </body>
 
