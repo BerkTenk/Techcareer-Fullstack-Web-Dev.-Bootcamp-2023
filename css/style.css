@@ -42,7 +42,18 @@ section{
     background-color: chocolate;
 }
 .basa-don-btn{
-    display: none;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    border: 1 solid black;
+    background-color: greenyellow;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: black;
+    padding: 0.4rem;
+}
+.basa-don-btn:hover{
+    background-color: lightgreen;
 }
 
 .giris::before{
@@ -50,20 +61,67 @@ section{
     font-weight: bold;
     padding-right: 1rem;
 }
-.anasayfa{
+.me{
     margin: 2rem;
 }
-.anasayfa img{
-    margin-top: 2rem;
-    width: 250px;
-    height: 250px;
+.me-hakkimda{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.me img{
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     transition: transform 0.2s ease-in-out;
 }
-.anasayfa img:hover{
+.me img:hover{
     transform: scale(1.2);
 }
-
+.me .left{
+    background-color: rgb(198, 174, 143);
+    padding: 10px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+    border: 1px solid black;
+    text-align: left;
+    width: 300px;
+    height: 300px;
+}
+.me .right{
+    text-align: right;
+}
+.egitim{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.egitim p{
+    border: 2px solid black;
+    background-color: darkseagreen;
+    padding: 10px;
+}
+.egitim p:hover{
+    border: 4px solid black;
+}
+.yazilim{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.yazilim p{
+    border: 2px solid black;
+    background-color: darkseagreen;
+    padding: 16px;
+}
+.yazilim p:hover{
+    border: 4px solid black;
+}
+.icerik-baslik{
+    text-decoration: underline;
+    font-size: 1.2rem;
+}
 .tablo {
     width: 100%;
     border-collapse: collapse;
