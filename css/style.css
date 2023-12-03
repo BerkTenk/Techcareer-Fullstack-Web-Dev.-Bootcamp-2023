@@ -50,7 +50,8 @@ section{
     text-decoration: none;
     font-size: 1.2rem;
     color: black;
-    padding: 0.4rem;
+    padding: 0.8rem;
+    border-radius: 50px;
 }
 .basa-don-btn:hover{
     background-color: lightgreen;
