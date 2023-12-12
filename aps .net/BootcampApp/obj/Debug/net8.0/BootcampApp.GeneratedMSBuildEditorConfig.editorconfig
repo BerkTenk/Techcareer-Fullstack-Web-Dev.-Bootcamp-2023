@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\berkt\Desktop\Projeler\Full-Stack Bootcamp\Techcareer-Fullstack-Web-Dev.-Bootcamp-2023\aps .net\BootcampApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/berkt/Desktop/Projeler/Full-Stack Bootcamp/Techcareer-Fullstack-Web-Dev.-Bootcamp-2023/aps .net/BootcampApp/Views/Bootcamp/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9vdGNhbXBcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/berkt/Desktop/Projeler/Full-Stack Bootcamp/Techcareer-Fullstack-Web-Dev.-Bootcamp-2023/aps .net/BootcampApp/Views/Bootcamp/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9vdGNhbXBcTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
