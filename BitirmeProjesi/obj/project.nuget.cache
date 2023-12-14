@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "DAunf5/fmq8+i7y1K8K7gzN4icNp4vvJ7DsI9L+6N3MyggGmWkaqiWSzSFgFyjq2ysnaI7yTkkS48uhK26X1TA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\berkt\\Desktop\\Projeler\\Full-Stack Bootcamp\\Techcareer-Fullstack-Web-Dev.-Bootcamp-2023\\BitirmeProjesi\\BitirmeProjesi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\berkt\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\berkt\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\berkt\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\berkt\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.14\\microsoft.netcore.app.host.win-x64.7.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}
