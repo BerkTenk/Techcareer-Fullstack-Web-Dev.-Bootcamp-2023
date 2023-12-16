@@ -20,3 +20,13 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+ul{
+  list-style: none;
+}
+li{
+  color: black;
+}
+a{
+  text-decoration: none;
+}

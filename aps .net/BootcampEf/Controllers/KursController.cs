@@ -1,5 +1,7 @@
 using BootcampEf.Data;
+using BootcampEf.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace BootcampEf.Controllers
@@ -10,18 +12,29 @@ namespace BootcampEf.Controllers
             _context = context;
         }
 
-         public async Task<IActionResult> Index(){          
-            return View(await _context.Kurslar.ToListAsync());
+         public async Task<IActionResult> Index(){   
+            var kurslar =  await _context.Kurslar.Include(k=>k.Ogretmen).ToListAsync();   
+            return View(kurslar);
         }
-        public IActionResult Create(){
+        public async Task<IActionResult>  Create(){
+            ViewBag.Ogretmenler = new SelectList(await _context.Ogretmenler.ToListAsync(),"OgretmenId","AdSoyad");
             return View();
         }
 
          [HttpPost]
-        public async Task<IActionResult> Create(Kurs model){
-            _context.Kurslar.Add(model);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+         [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(KursViewModel model){
+            if(ModelState.IsValid){
+                _context.Kurslar.Add(new Kurs(){
+                    KursId = model.KursId,
+                    Baslik = model.Baslik,
+                    OgretmenId = model.OgretmenId
+                });
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+            
         }
         [HttpGet]
         public async Task<IActionResult> Edit(int? id){
@@ -29,30 +42,48 @@ namespace BootcampEf.Controllers
                 return NotFound();
             }
             
-            var krs = await _context.Kurslar.FindAsync(id);
+            var kurs = await _context
+            .Kurslar.Include(k=>k.KursKayitlari)
+            .ThenInclude(k=>k.Ogrenci)
+            .Select(k=> new KursViewModel{
+                KursId = k.KursId,
+                Baslik = k.Baslik,
+                OgretmenId = k.OgretmenId,
+                KursKayitlari = k.KursKayitlari
+            })
+            .FirstOrDefaultAsync(k=>k.KursId == id);
+            
             
 
-            if(krs == null){
+            if(kurs == null){
                 return NotFound();
             }
 
-            return View(krs);
+            return View(kurs);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int? id, Kurs model){
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int? id, KursViewModel model){
 
             if(id != model.KursId){
                 return NotFound();
             }
-            if(ModelState.IsValid){
-                try{
-                    _context.Update(model);
+              if(ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(new Kurs(){KursId = model.KursId, Baslik = model.Baslik, OgretmenId = model.OgretmenId});
                     await _context.SaveChangesAsync();
-                }catch(DbUpdateConcurrencyException){
-                    if(!_context.Kurslar.Any(o => o.KursId == model.KursId)){
+                }
+                catch(DbUpdateException)
+                {
+                    if(!_context.Kurslar.Any(o => o.KursId == model.KursId))
+                    {
                         return NotFound();
-                    }else{
+                    } 
+                    else 
+                    {
                         throw;
                     }
                 }
@@ -60,32 +91,37 @@ namespace BootcampEf.Controllers
             }
 
             return View(model);
-            
         }
+
         [HttpGet]
-        public async Task<IActionResult> Delete(int? id){
-            if(id==null){
-                return NotFound();
-            } 
-            var kurs = await _context.Kurslar.FindAsync(id);
-            if(kurs==null){
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if(id == null)
+            {
                 return NotFound();
             }
-            return View(kurs);
 
+            var kurs = await _context.Kurslar.FindAsync(id);
+
+            if(kurs == null)
+            {
+                return NotFound();
+            }
+
+            return View(kurs);
         }
 
         [HttpPost]
-
-        public async Task<IActionResult> Delete([FromForm]int id){
+        public async Task<IActionResult> Delete([FromForm]int id)
+        {
             var kurs = await _context.Kurslar.FindAsync(id);
-            if(kurs==null){
+            if(kurs == null)
+            {
                 return NotFound();
             }
             _context.Kurslar.Remove(kurs);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
-
     }
 }

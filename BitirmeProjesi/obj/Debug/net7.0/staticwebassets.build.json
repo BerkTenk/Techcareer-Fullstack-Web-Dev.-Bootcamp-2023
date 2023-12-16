@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0MAprqD7ObMCQDqqcaNELxG5wMm3X4l+eI8hPNTaoj0=",
+  "Hash": "ogqlgAjbWRnNZiPyPigdvNzS+7PqL6vlas4qjQi9LyA=",
   "Source": "BitirmeProjesi",
   "BasePath": "_content/BitirmeProjesi",
   "Mode": "Default",
@@ -93,12 +93,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\berkt\\Desktop\\Projeler\\Full-Stack Bootcamp\\Techcareer-Fullstack-Web-Dev.-Bootcamp-2023\\BitirmeProjesi\\wwwroot\\images\\Berk Tenkoglu.jpg",
+      "Identity": "C:\\Users\\berkt\\Desktop\\Projeler\\Full-Stack Bootcamp\\Techcareer-Fullstack-Web-Dev.-Bootcamp-2023\\BitirmeProjesi\\wwwroot\\images\\1.jpg",
       "SourceId": "BitirmeProjesi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\berkt\\Desktop\\Projeler\\Full-Stack Bootcamp\\Techcareer-Fullstack-Web-Dev.-Bootcamp-2023\\BitirmeProjesi\\wwwroot\\",
       "BasePath": "_content/BitirmeProjesi",
-      "RelativePath": "images/Berk Tenkoglu.jpg",
+      "RelativePath": "images/1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -109,7 +109,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\Berk Tenkoglu.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\1.jpg"
     },
     {
       "Identity": "C:\\Users\\berkt\\Desktop\\Projeler\\Full-Stack Bootcamp\\Techcareer-Fullstack-Web-Dev.-Bootcamp-2023\\BitirmeProjesi\\wwwroot\\js\\site.js",
