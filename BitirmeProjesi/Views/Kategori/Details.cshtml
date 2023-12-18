@@ -1,0 +1,28 @@
+@model List<Urun>
+
+<h2 class="text-center">Kategoriye Ait Ürünler</h2>
+@if (Model != null){
+    @foreach (var urun in Model){
+        
+    <div class="container align-middle">
+        <h4 class="mt-2">@urun.UrunAdi</h4>
+        <div class="row bg-light">
+            <div class="col-sm-4">
+        <img src="@urun.Image" class="w-25">
+        </div>
+        <div class="col-sm-4">
+        <p class="bg-light pt-4">@urun.Description</p>
+        </div>
+        <div class="col-sm-4">
+            <div class="d-flex justify-content-around pt-3">
+        <p class="bg-success rounded-pill p-2 text-center text-light border border-2 border-dark">@urun.Price ₺</p>
+        <button class="btn btn-warning rounded-pill border border-2 border-dark"><a class="text-dark" asp-controller="Urun" asp-action="Details" asp-route-id="@urun.UrunId">Ürünü Görüntüle</a></button>
+        </div>
+        </div>
+        </div>
+    </div>
+}
+}
+else{
+    <p>Ürün bulunamadı.</p>
+}

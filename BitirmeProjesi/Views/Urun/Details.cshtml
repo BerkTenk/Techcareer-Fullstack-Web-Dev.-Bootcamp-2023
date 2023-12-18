@@ -1,0 +1,7 @@
+@model Urun
+
+<h2>@Model.UrunAdi</h2>
+<img src="@Model.Image" alt="..." class="w-25">
+<p>@Model.Description</p>
+<p><label class="bg-success rounded-pill p-2 text-center text-light border border-2 border-dark"> @Model.Price ₺</label></p>
+<button class="btn btn-secondary rounded-pill border border-2 border-dark"><a class="text-light" asp-controller="Urun" asp-action="Index">Tüm Ürünlere Geri Dön</a></button>

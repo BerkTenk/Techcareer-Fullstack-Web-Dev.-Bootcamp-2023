@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using BitirmeProjesi.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace BitirmeProjesi.Controllers
@@ -11,16 +13,16 @@ namespace BitirmeProjesi.Controllers
     [Route("[controller]")]
     public class KampanyaController : Controller
     {
-        private readonly ILogger<KampanyaController> _logger;
+        private readonly DataContext _context;
 
-        public KampanyaController(ILogger<KampanyaController> logger)
+        public KampanyaController(DataContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+       public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context.Kampanyalar.ToListAsync());
         }
 
         

@@ -10,6 +10,9 @@
           <a class="nav-link active text-warning" aria-current="page" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link text-white" asp-controller="Urun" asp-action="Index">Tüm Ürünler</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link text-white" asp-controller="Kampanya" asp-action="Index">Kampanyalar</a>
         </li>
         
@@ -18,18 +21,20 @@
             Kategoriler
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            
+              <li><a class="dropdown-item" asp-controller="Kategori" asp-action="Details" asp-route-id="1">Giyim & Tekstil</a></li>
+              <li><a class="dropdown-item" asp-controller="Kategori" asp-action="Details" asp-route-id="2">Bebek Odası</a></li>
+              <li><a class="dropdown-item" asp-controller="Kategori" asp-action="Details" asp-route-id="3">Oyuncak & Kitap</a></li>
+              <li><a class="dropdown-item" asp-controller="Kategori" asp-action="Details" asp-route-id="4">Beslenme</a></li>
           </ul>
         </li>
-        <li><button class="btn btn-md btn-secondary m-1 rounded-pill">Hesabım</button></li>
-        <li><button class="btn btn-md btn-secondary m-1 rounded-pill">Sepetim</button></li>
-      </ul>
+        <li><button class="btn btn-md btn-secondary m-1 rounded-pill"><i class="fa-solid fa-user px-2"></i>Hesabım</button></li>
+        <li><button class="btn btn-md btn-secondary m-1 rounded-pill"><i class="fa-solid fa-cart-shopping px-1"></i>Sepetim</button></li>
+        </div>
+      
        
       <form class="d-flex ml-4" role="search">
-        <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search"></input>
         <button class="btn btn-success rounded-pill" type="submit">Search</button>
       </form>
     </div>
