@@ -20,9 +20,13 @@ namespace BitirmeProjesi.Controllers
             _context = context;
         }
         [Route("urun")]
-       public IActionResult Index()
+       public IActionResult Index(string searchTerm)
         {
             var urun = _context.Urunler.ToList();
+            if(!string.IsNullOrEmpty(searchTerm)){
+                urun = urun.Where(u=>u.UrunAdi.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)||
+                u.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
             return View(urun);
         }
         [Route("urun/{id}")]
