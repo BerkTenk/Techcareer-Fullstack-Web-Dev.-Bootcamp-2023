@@ -5,6 +5,9 @@
 {
    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
         @foreach(var card in Model){
+            if(card.IsActive){
+
+            
             <div class="col">
             <div class="card ">
                 <h5 class="card-title m-4 mx-auto p-2">@card.UrunAdi</h5>
@@ -21,6 +24,7 @@
                 </div>
             </div>
         </div>
+        }
         }
         
         

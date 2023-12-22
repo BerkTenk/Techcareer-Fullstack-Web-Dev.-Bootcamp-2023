@@ -45,7 +45,7 @@
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
         @foreach(var card in Model){
-            if(card.IsHome){
+            if(card.IsHome && card.IsActive){
             <div class="col">
             <div class="card ">
                 <h5 class="card-title m-4 mx-auto">@card.UrunAdi</h5>

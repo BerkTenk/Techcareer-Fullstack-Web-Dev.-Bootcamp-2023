@@ -6,7 +6,7 @@
 <hr>
 <div class="container">
     <div class="row d-flex justify-content-center">
-        <div class="bg-light text-center  login-box">
+        <div class="bg-light   login-box">
             <form method="post" asp-action="Login">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="mb-3">
@@ -17,9 +17,9 @@
                     <label asp-for="Password">Şifre</label>
                     <input asp-for="Password" class="form-control" type="password">
                 </div>
-                <div class="form-check mb-3">
-                    <label asp-for="RememberMe" class="form-check-label"></label>
-                    <input asp-for="RememberMe" class="form-check-input">
+                <div class="form-check form-check-inline mb-3">
+                    <label asp-for="RememberMe" class="form-check-label">Beni Hatırla</label>
+                    <input asp-for="RememberMe" class="form-check-input ">
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg rounded-pill">Giriş Yap</button>
             </form>
