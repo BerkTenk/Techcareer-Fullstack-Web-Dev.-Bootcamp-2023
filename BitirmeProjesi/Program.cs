@@ -1,5 +1,8 @@
 using BitirmeProjesi.Data;
+using BitirmeProjesi.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,32 @@ builder.Services.AddDbContext<DataContext>(options => {
     var connectionString = config.GetConnectionString("database");
     options.UseSqlite(connectionString);
 });
+builder.Services.AddIdentity<IdentityUser,IdentityRole>()
+.AddEntityFrameworkStores<DataContext>()
+.AddSignInManager<SignInManager<IdentityUser>>();
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+});
+builder.Services.AddAuthentication(options =>{
+    options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+    options.DefaultSignOutScheme = IdentityConstants.ExternalScheme;
+    options.DefaultChallengeScheme = IdentityConstants.ExternalScheme;
+}).AddCookie("Cookies", options =>{
+    options.LoginPath = "/Users/Login";
+    options.LogoutPath = "/Users/CikisYap";
+});
+
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddSession();
+builder.Services.ConfigureApplicationCookie(options => {
+    options.AccessDeniedPath = "/Users/AccessDenied";
+    options.SlidingExpiration = true;
+    options.ExpireTimeSpan = TimeSpan.FromDays(30);
+});
+
 
 var app = builder.Build();
 
@@ -26,11 +55,16 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
 
 app.UseEndpoints(endpoints =>
 {
+    endpoints.MapControllerRoute(
+        name: "sepet",
+        pattern: "sepet/{action=Index}/{id?}",
+        defaults: new { controller = "Sepet" });
     endpoints.MapControllerRoute(
         name: "category",
         pattern: "category/{id}",

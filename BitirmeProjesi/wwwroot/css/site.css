@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  overflow-x: hidden;
 }
 
 ul{
@@ -29,4 +29,15 @@ li{
 }
 a{
   text-decoration: none;
+}
+.login-bg{
+background-color: #fef6eb;
+}
+.login-box{
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+textarea{
+  max-width: 500px;
+  margin: auto;
 }

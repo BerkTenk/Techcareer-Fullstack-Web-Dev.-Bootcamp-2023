@@ -3,29 +3,29 @@
 <h2 class="text-center">Tüm Ürünler</h2>
 @if (Model != null)
 {
-    @foreach (var urun in Model)
-    {
-        <div class="container">
-            <h4 class="mt-2">@urun.UrunAdi</h4>
-            <div class="row bg-light">
-                <div class="col-sm-4">
-                    <img src="@urun.Image" class="w-25">
-                </div>
-                <div class="col-sm-4">
-                    <p class="bg-light pt-4">@urun.Description</p>
-                </div>
-                <div class="col-sm-4">
-                    <div class="d-flex justify-content-around pt-3">
-                        <p class="bg-success rounded-pill p-2 text-center text-light border border-2 border-dark">@urun.Price ₺
-                        </p>
-                        <button class="btn btn-warning rounded-pill border border-2 border-dark"><a class="text-dark"
-                                asp-controller="Urun" asp-action="Details" asp-route-id="@urun.UrunId">Ürünü
-                                Görüntüle</a></button>
+   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
+        @foreach(var card in Model){
+            <div class="col">
+            <div class="card ">
+                <h5 class="card-title m-4 mx-auto p-2">@card.UrunAdi</h5>
+                <img src="@card.Image"
+                    class="card-img-top w-50 mx-auto" alt="...">
+                <div class="card-body">
+                    
+                    <p class="card-text text-center">@card.Description</p>
+                    <div class="d-flex justify-content-around">
+                    <label class="bg-success rounded-pill p-2 text-center text-light border border-2 border-dark ">@card.Price ₺</label>
+                    <button class="btn btn-warning rounded-pill border border-2 border-dark"><a class="text-dark" asp-controller="Urun" asp-action="Details" 
+                    asp-route-id="@card.UrunId">Ürünü Görüntüle</a></button>
                     </div>
                 </div>
             </div>
         </div>
-    }
+        }
+        
+        
+
+    </div>
 }
 else
 {

@@ -1,0 +1,46 @@
+@model List<SepetItem>
+
+<h2>Sepetim</h2>
+<div class="table-responsive">
+<table class="table text-center ">
+    <thead>
+        <tr>
+            <th style="max-width: 250px;">Ürün Adı</th>
+            <th>Ürüne Git</th>
+            <th>Fiyat</th>
+            <th>Miktar</th>
+            <th>Toplam</th>
+            <th>Miktarı Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UrunAdi</td>
+                <td><button class="btn btn-warning rounded-pill border border-2 border-dark"><a class="text-dark" asp-controller="Urun" asp-action="Details" 
+                    asp-route-id="@item.UrunId">Ürünü Görüntüle</a></button></td>
+                <td>@item.Fiyat</td>
+                <td>@item.Miktar</td>
+                <td>@(item.Fiyat * item.Miktar)</td>
+                <td>
+                     <form method="post" asp-action="SepetiGuncelle" asp-controller="Sepet">
+                        <input type="hidden" name="urunId" value="@item.UrunId" />
+                        <input type="number" name="miktar" value="@item.Miktar" class="mb-1"/>
+                        <button type="submit" class="btn btn-secondary btn-sm p-1">Güncelle</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" asp-action="SepetiGuncelle" asp-controller="Sepet">
+                        <input type="hidden" name="urunId" value="@item.UrunId" />
+                        <input type="hidden" name="miktar" value="0" />
+                        <button type="submit" class="btn btn-danger " onclick="return confirm('Emin misiniz?')">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+<p class="text-end">Toplam Fiyat: @ViewBag.ToplamFiyat ₺</p>

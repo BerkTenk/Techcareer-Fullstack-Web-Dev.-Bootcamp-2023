@@ -28,14 +28,23 @@
               <li><a class="dropdown-item" asp-controller="Kategori" asp-action="Details" asp-route-id="4">Beslenme</a></li>
           </ul>
         </li>
-        <li><button class="btn btn-md btn-secondary m-1 rounded-pill"><i class="fa-solid fa-user px-2"></i>Hesabım</button></li>
-        <li><button class="btn btn-md btn-secondary m-1 rounded-pill"><i class="fa-solid fa-cart-shopping px-1"></i>Sepetim</button></li>
+         @if (User.Identity.IsAuthenticated)
+         {
+          <span class="nav-item nav-link text-white">Merhaba  @User.Identity.Name</span>
+              <form method="post" asp-action="CikisYap" asp-controller="Users">
+              <button type="submit" class="nav-item nav-link btn btn-link text-white btn-danger rounded-pill p-2" onclick="return confirm('Çıkış Yapılacak,Emin misiniz?')">Çıkış Yap</button>
+          </form>
+         } else{
+          <li><a class="btn btn-md btn-secondary m-1 rounded-pill" asp-controller="Users" asp-action="Login"><i class="fa-solid fa-user px-1"></i>Giriş Yap</a></li>
+         }
+        
+        <li><a class="btn btn-md btn-secondary m-1 rounded-pill" asp-controller="Sepet" asp-action="Index"><i class="fa-solid fa-cart-shopping px-1"></i>Sepetim</a></li>
         </div>
       
        
       <form class="d-flex ml-4" role="search" asp-controller="Urun" asp-action="Index" method="get">
-        <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" name="searchTerm">
-        <button class="btn btn-success rounded-pill" type="submit">Search</button>
+        <input class="form-control me-2 rounded-pill" type="search" placeholder="Ürün Ara" aria-label="Search" name="searchTerm">
+        <button class="btn btn-success rounded-pill px-3" type="submit">Ara</button>
       </form>
     </div>
   </div>

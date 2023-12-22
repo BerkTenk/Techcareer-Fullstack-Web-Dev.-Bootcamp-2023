@@ -1,0 +1,33 @@
+@model CreateUserModel
+<div class="text-center login-bg">
+<h2>Kaydol</h2>
+<hr>
+<p>Zaten Bir Hesabın Var Mı ? <a asp-action="Login" asp-controller="Users" class="fs-5">Giriş Yap</a></p><hr>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="bg-light text-center  login-box">
+            <form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="mb-3">
+        <label asp-for="UserName">Kullanıcı Adı</label>
+        <input asp-for="UserName" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password">Şifre</label>
+        <input asp-for="Password" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="ConfirmPassword">Şifreyi Onayla</label>
+        <input asp-for="ConfirmPassword" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg rounded-pill ">Kaydol</button>
+</form>
+        </div>
+    </div>
+</div>
+
+</div>

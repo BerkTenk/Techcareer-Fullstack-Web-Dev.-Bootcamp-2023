@@ -43,19 +43,22 @@
 <h2 class="text-center mt-4">En Popüler Ürünler</h2>
 <div class="container bg-light">
 
-    <div class="row row-cols-1  g-4 align-items-center">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
         @foreach(var card in Model){
             if(card.IsHome){
             <div class="col">
             <div class="card ">
+                <h5 class="card-title m-4 mx-auto">@card.UrunAdi</h5>
                 <img src="@card.Image"
-                    class="card-img-top w-25" alt="...">
+                    class="card-img-top w-75 mx-auto" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">@card.UrunAdi</h5>
-                    <p class="card-text">@card.Description</p>
-                    <label class="bg-success rounded-pill p-2 text-center text-light border border-2 border-dark">@card.Price ₺</label>
+                    
+                    <p class="card-text text-center">@card.Description</p>
+                    <div class="d-flex justify-content-around">
+                    <label class="bg-success rounded-pill p-2 text-center text-light border border-2 border-dark ">@card.Price ₺</label>
                     <button class="btn btn-warning rounded-pill border border-2 border-dark"><a class="text-dark" asp-controller="Urun" asp-action="Details" 
                     asp-route-id="@card.UrunId">Ürünü Görüntüle</a></button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,7 +1,138 @@
-@model Urun
+@model BitirmeProjesi.Models.YorumUrunViewModel
+<h2 class="text-center p-2">@Model.UrunAdi</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <img src="@Model.Image" alt="..." class="w-100">
+        </div>
+        <div class="col-sm-12 col-md-4 mt-4 p-4 text-center">
+            <p>@Model.Description</p>
+            <p><label class="bg-success rounded-pill p-2 text-center text-light border border-2 border-dark">
+                    @Model.Price ₺</label></p>
+                    <p class="bg-warning rounded-pill p-2 m-2">Ortalama Puan: @(Model.Puanlar.Any() ? Model.Puanlar.Average(p => p.PuanDegeri) : 0)</p>
 
-<h2>@Model.UrunAdi</h2>
-<img src="@Model.Image" alt="..." class="w-25">
-<p>@Model.Description</p>
-<p><label class="bg-success rounded-pill p-2 text-center text-light border border-2 border-dark"> @Model.Price ₺</label></p>
-<button class="btn btn-secondary rounded-pill border border-2 border-dark"><a class="text-light" asp-controller="Urun" asp-action="Index">Tüm Ürünlere Geri Dön</a></button>
+                @if(User.Identity.IsAuthenticated){
+                    @if(User.IsInRole("Admin")){
+                        <form method="post"  asp-action="UpdateFeatures" asp-controller="Urun" onsubmit="logCheckboxValues()">
+                            <input type="hidden" name="urunId" value="@Model.UrunId" />
+                            <label for="isHomeCheckbox">Is Home</label>
+                            <input type="checkbox" id="isHomeCheckbox" name="isHome" value="true" @(Model.IsHome ? "checked" : "") />
+                            <label for="isActiveCheckbox">Is Active</label>
+                            <input type="checkbox" id="isActiveCheckbox" name="isActive" value="true" @(Model.IsActive ? "checked" : "") />
+                            <button type="submit">Değişiklikleri Kaydet</button>
+                        </form>
+                    }
+                }
+            
+        </div>
+        <div class="col-sm-12 col-md-4 mt-4 p-4 text-center">
+            @if (@Model.StockQuantity <= 10)
+            {
+                <p class="bg-danger rounded-pill text-light p-2">Stoklarımızda sadece @Model.StockQuantity adet kalmıştır.</p>
+            }
+            else
+            {
+                <p class="bg-primary rounded-pill text-light p-2">Stoklarımızda @Model.StockQuantity adet kalmıştır.</p>
+            }
+
+            <form method="post" asp-action="SepeteEkle" asp-controller="Sepet">
+                <input type="hidden" name="urunId" value="@Model.UrunId" />
+                <input type="hidden" name="urunAdi" value="@Model.UrunAdi" />
+                <input type="hidden" name="fiyat" value="@Model.Price" />
+                <button type="submit" class="btn btn-lg btn-outline-success my-2">Sepete Ekle</button>
+            </form>
+            <button class="btn btn-secondary rounded-pill border border-2 border-dark mt-4"><a class="text-light"
+                    asp-controller="Urun" asp-action="Index">Tüm Ürünlere Geri Dön</a></button>
+
+            @if (User.Identity.IsAuthenticated)
+    {
+        <h5 class="m-2">Puan Ver</h5>
+        <form asp-action="PuanVer" asp-controller="Urun" method="post" class="bg-light border p-2">
+            <input type="hidden" asp-for="UrunId" value="@Model.UrunId" />
+
+            <div class="form-group">
+                <label for="puanDegeri">Puan:</label>
+                <select class="form-control" id="puanDegeri" name="puanDegeri">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary m-2">Puan Ver</button>
+        </form>
+    }
+    else
+    {
+        <p class="text-danger fs-5 p-2 m-2">Giriş yapmadığınız için puan veremezsiniz.</p>
+    }
+</div>
+        </div>
+    </div>
+
+</div>
+<div class="text-center">
+    
+    <div class="row">
+        <div class="col-sm-6 bg-light border">
+            <h3 class="m-2">Yorumlar</h3>
+            @if(Model.Yorumlar.Any()){
+        <ul>
+            @foreach (var yorum in Model.Yorumlar)
+            {
+                <li>
+                    <strong>@yorum.KullaniciAdi:</strong>
+                    <p>@yorum.YorumMetni</p>
+                </li>
+            }
+        </ul>
+    } else{
+         <p class="text-center">Henüz yorum bulunmamaktadır.</p>
+    }
+        </div>
+            <div class="col-sm-6 bg-light border">
+                <h3 class="m-2">Puanlar</h3>
+                @if (Model.Puanlar.Any())
+                {
+                    <ul>
+                        @foreach (var puan in Model.Puanlar)
+                        {
+                            <li>
+                                <strong>@puan.KullaniciAdi:</strong>
+                                <p>Puan: @puan.PuanDegeri</p>
+                            </li>
+                        }
+                    </ul>
+                        }
+                        else
+                        {
+                            <p class="text-center">Henüz puan veren kullanıcı yok.</p>
+                        }
+
+            </div>
+    </div>
+    
+    
+    @if (User.Identity.IsAuthenticated)
+{
+    <h3 class="m-2">Yeni Yorum Ekle</h3>
+    <form asp-action="YorumYap" asp-controller="Urun" method="post">
+        <input type="hidden" asp-for="UrunId" value="@Model.UrunId" />
+
+        <div class="form-group">
+            <label asp-for="YorumMetni" class="m-2"></label>
+            <textarea asp-for="YorumMetni" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="YorumMetni" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary m-2">Yorum Ekle</button>
+    </form>
+}
+else
+{
+    <p class="text-danger fs-5 p-2 m-2">Giriş yapmadığınız için yorum ekleyemezsiniz.</p>
+}
+
+</div>
