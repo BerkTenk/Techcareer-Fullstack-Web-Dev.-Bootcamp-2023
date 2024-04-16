@@ -7,17 +7,18 @@
         </div>
         <div class="col-sm-12 col-md-4 mt-4 p-4 text-center">
             <p>@Model.Description</p>
-            
-                    <p class="bg-warning rounded-pill p-2 m-2">Ürünün Puanı : @(Model.Puanlar.Any() ? Model.Puanlar.Average(p => p.PuanDegeri) : 0)</p>
+            <p><label class="bg-success rounded-pill p-2 text-center text-light border border-2 border-dark">
+                    @Model.Price ₺</label></p>
+                    <p class="bg-warning rounded-pill p-2 m-2">Ortalama Puan: @(Model.Puanlar.Any() ? Model.Puanlar.Average(p => p.PuanDegeri) : 0)</p>
 
                 @if(User.Identity.IsAuthenticated){
                     @if(User.IsInRole("Admin")){
                         <form method="post"  asp-action="UpdateFeatures" asp-controller="Urun" onsubmit="logCheckboxValues()">
                             <input type="hidden" name="urunId" value="@Model.UrunId" />
                             <label for="isHomeCheckbox">Is Home</label>
-                            <input type="checkbox" id="isHomeCheckbox" name="isHome" value="true" @(Model.IsHome ? "checked" : "" ) />
+                            <input type="checkbox" id="isHomeCheckbox" name="isHome" value="true" @(Model.IsHome ? "checked" : "") />
                             <label for="isActiveCheckbox">Is Active</label>
-                            <input type="checkbox" id="isActiveCheckbox"  onclick="return confirm('Ürünün aktiflik durumunda değişiklik yapıyorsunuz. Eğer pasif olarak güncellerseniz kullanıcılar ana sayfada ve tüm ürünler sekmesinde göremez. Emin misiniz?')" name="isActive" value="true" @(Model.IsActive ? "checked" : "") />
+                            <input type="checkbox" id="isActiveCheckbox" name="isActive" value="true" @(Model.IsActive ? "checked" : "") />
                             <button type="submit">Değişiklikleri Kaydet</button>
                         </form>
                     }
@@ -25,18 +26,6 @@
             
         </div>
         <div class="col-sm-12 col-md-4 mt-4 p-4 text-center">
-            <button class="btn btn-secondary rounded-pill border border-2 border-dark mb-2"><a class="text-light"
-                    asp-controller="Urun" asp-action="Index">Tüm Ürünlere Geri Dön</a></button>
-            
-
-            <form method="post" asp-action="SepeteEkle" asp-controller="Sepet">
-                <input type="hidden" name="urunId" value="@Model.UrunId" />
-                <input type="hidden" name="urunAdi" value="@Model.UrunAdi" />
-                <input type="hidden" name="fiyat" value="@Model.Price" />
-                <p><label class="bg-success rounded-pill p-2 text-center text-light border border-2 border-dark fs-5 px-4 mt-3">
-                    @Model.Price ₺</label></p>
-                <button type="submit" class="btn btn-lg btn-outline-success my-3">Sepete Ekle</button>
-            </form>
             @if (@Model.StockQuantity <= 10)
             {
                 <p class="bg-danger rounded-pill text-light p-2">Stoklarımızda sadece @Model.StockQuantity adet kalmıştır.</p>
@@ -45,6 +34,15 @@
             {
                 <p class="bg-primary rounded-pill text-light p-2">Stoklarımızda @Model.StockQuantity adet kalmıştır.</p>
             }
+
+            <form method="post" asp-action="SepeteEkle" asp-controller="Sepet">
+                <input type="hidden" name="urunId" value="@Model.UrunId" />
+                <input type="hidden" name="urunAdi" value="@Model.UrunAdi" />
+                <input type="hidden" name="fiyat" value="@Model.Price" />
+                <button type="submit" class="btn btn-lg btn-outline-success my-2">Sepete Ekle</button>
+            </form>
+            <button class="btn btn-secondary rounded-pill border border-2 border-dark mt-4"><a class="text-light"
+                    asp-controller="Urun" asp-action="Index">Tüm Ürünlere Geri Dön</a></button>
 
             @if (User.Identity.IsAuthenticated)
     {
