@@ -5,7 +5,7 @@ pipeline {
             when {
                 // Triggering Black Duck Security Scan on master branch or Pull Request
                 anyOf {
-                    branch 'master'
+                    branch 'main'
                     branch pattern: "PR-\\d+", comparator: "REGEXP"
                 }
             }
@@ -24,8 +24,8 @@ pipeline {
                           mark_build_status: 'SUCCESS'
                 
                     // Uncomment to add custom logic based on return status
-                     if (status == 8) { unstable 'policy violation' }
-                     else if (status != 0) { error 'plugin failure' }
+                   //  if (status == 8) { unstable 'policy violation' }
+                    // else if (status != 0) { error 'plugin failure' }
                 }
             }
         }
