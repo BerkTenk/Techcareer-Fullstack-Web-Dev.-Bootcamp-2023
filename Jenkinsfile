@@ -18,7 +18,7 @@ pipeline {
                         coverity_project_name: "multi-test",
                         coverity_waitForScan: false,
                         // Pull Request Comments
-                          coverity_prComment_enabled: true,
+                          coverity_prComment_enabled: false,
                           
                         // Mark build status if issues found
                           mark_build_status: 'SUCCESS'
