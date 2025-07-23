@@ -21,10 +21,7 @@ pipeline {
                         mark_build_status: 'UNSTABLE'
                         
                     // Status kontrolü (plugin hatalarında build'i kırmamak için)
-                    if (status != 0) {
-                        echo "Coverity scan completed with status code: ${status}"
-                        currentBuild.result = 'UNSTABLE'
-                    }
+                   
                 }
             }
         }
