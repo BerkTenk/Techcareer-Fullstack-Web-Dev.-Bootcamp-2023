@@ -13,19 +13,19 @@ pipeline {
                 script {
                     def status = security_scan product: 'coverity'
                         // Uncomment if below parameters are not set in global configuration                  
-                        // coverity_url:'http://192.168.66.144:8080/',                           
-                        // coverity_user: 'admin',
-                        // coverity_passphrase: 'KfnCyber23*!'
-        
+
+                        coverity_stream_name: "COVERITY_STREAM_NAME", 
+                         coverity_project_name: "COVERITY_PROJECT_NAME",
+                        coverity_waitForScan: false,
                         // Pull Request Comments
-                        //  coverity_prComment_enabled: true
+                          coverity_prComment_enabled: true
                           
                         // Mark build status if issues found
-                        //  mark_build_status: 'SUCCESS'
+                          mark_build_status: 'SUCCESS'
                 
                     // Uncomment to add custom logic based on return status
-                    // if (status == 8) { unstable 'policy violation' }
-                    // else if (status != 0) { error 'plugin failure' }
+                     if (status == 8) { unstable 'policy violation' }
+                     else if (status != 0) { error 'plugin failure' }
                 }
             }
         }
