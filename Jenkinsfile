@@ -4,7 +4,7 @@ pipeline {
         stage("BlackDuckSecurityScan") {
             when {
                 anyOf {
-                    branch 'main'
+                    branch 'test'
                     branch pattern: "PR-\\d+", comparator: "REGEXP"
                 }
             }
