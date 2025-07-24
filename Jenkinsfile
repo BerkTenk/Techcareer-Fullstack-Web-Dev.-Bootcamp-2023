@@ -16,7 +16,8 @@ pipeline {
                         coverity_project_name: "multi-test",
                         coverity_waitForScan: false,
                         coverity_prComment_enabled: false,
-                        mark_build_status: 'UNSTABLE'
+                        mark_build_status: 'UNSTABLE',
+                        coverity_local=true
                         
                     // Status kontrolü (plugin hatalarında build'i kırmamak için)
                    
