@@ -12,8 +12,6 @@ pipeline {
                 script {
                     def status = security_scan product: 'coverity',
                         coverity_url: "http://192.168.66.144:8080",
-                        coverity_user: "admin",
-                        coverity_passphrase: "KfnCyber23*!",
                         coverity_stream_name: "multi-test",
                         coverity_project_name: "multi-test",
                         coverity_waitForScan: false,
