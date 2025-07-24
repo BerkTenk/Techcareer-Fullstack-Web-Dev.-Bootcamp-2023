@@ -17,7 +17,7 @@ pipeline {
                         coverity_waitForScan: false,
                         coverity_prComment_enabled: false,
                         mark_build_status: 'UNSTABLE',
-                        coverity_local=true
+                        coverity_local: true
                         
                     // Status kontrolü (plugin hatalarında build'i kırmamak için)
                    
